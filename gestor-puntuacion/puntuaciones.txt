@@ -1,0 +1,4 @@
+unai;90
+unai;90
+ali;200
+luis;90
