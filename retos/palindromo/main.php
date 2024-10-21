@@ -18,18 +18,24 @@ function remove_accents($str) {
     return str_replace($accents, $no_accents, $str);
 }
 
+function sanitize_input($str) {
+    // Eliminar acentos
+    $str = remove_accents($str);
+    // Eliminar espacios y caracteres especiales
+    $str = preg_replace('/[^a-zA-Z0-9]/', '', $str);
+    return $str;
+}
 
 function main($txt){
     $txt = strtolower($txt);
-    $txt = remove_accents($txt);
-$rev = strrev($txt);
-echo $txt. "\n";
-if ($rev != $txt){
-    return "false";
-} else{
-    return "true";
-}
+    $txt = sanitize_input($txt);
+    $rev = strrev($txt);
+    echo $txt . "\n";
+    if ($rev != $txt){
+        return "false";
+    } else{
+        return "true";
+    }
 }
 
-
-echo main("Árbol");
+echo main("Árbol@@");
