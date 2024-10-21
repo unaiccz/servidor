@@ -11,7 +11,7 @@ use Exception;
 
 function main() {
     try {
-        $file = fopen('puntuaciones.txt', 'a+');
+        $file = fopen('puntuaciones.txt', 'r');
         if ($file) {
             // Escribir en el archivo
             fwrite($file, "username;puntuacion" . PHP_EOL);
