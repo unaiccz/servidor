@@ -107,11 +107,8 @@ echo "}";
     echo "</style>";
 
     // Encabezado
-    echo "<div>";
     echo "<h1>Batcueva</h1>";
     echo "<hr>";
-    echo "<h4>Sensores</h4>";
-    echo "</div>";
 
     // Imprimir matriz completa
     echo "<div class='matriz'>";
