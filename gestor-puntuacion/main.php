@@ -1,6 +1,6 @@
 <form action="./UserController.php" method="post">
     <input type="text" placeholder="Usuario">
-    <input type="text" placeholder="Puntuacion">
+    <input type="text" placeholder="Puntuacion" name="puntuacion">
     <input type="submit">
 </form>
 

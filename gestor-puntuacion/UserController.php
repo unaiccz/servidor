@@ -18,7 +18,7 @@ if ($_POST){
     $username = $_POST['username'];
     $puntuacion = $_POST['puntuacion'];
     if(strlen($username) < 3 || $puntuacion < 0){
-        header("Location: main.php");
+        header("Location:main.php");
 
         echo "El usuario deve tener almenos 3 caracteres y la puntuacion no on no puede ser negativa";
         exit();
