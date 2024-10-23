@@ -14,12 +14,12 @@ $camisa = new Producto("camisa", 50);
 $zapatillas = new Producto("zapatillas", 200);
 $gorra = new Producto("gorra", 20);
 
-// variables de control de cantidad y costo
+// variables de control de cantidad 
 $pantalones_cantidad = 0;
 $camisa_cantidad = 0;
 $zapatillas_cantidad = 0;
 $gorra_cantidad = 0;
-// estado global para controlar el ciclomientras los ingresos no sean correctos
+// estado global para controlar el ciclo mientras los ingresos sean correctos
 $state = 0;
 while ($state != 1){
     echo "Ingrese su nombre: ";
