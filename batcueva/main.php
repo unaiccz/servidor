@@ -1,26 +1,45 @@
 <?php
-
+// Funcion principal
 function main(){
+    //Array para almacenar los peligros
     $peligros = array();
+    //    Funcion para generar 'peligros'
     function c_sensor(&$matrix){
+        // uso de rand() para obtener numeros aleatorios
+        //coordenadas de posicion aleatorias  ###
     $n1 = rand(0, 19);
     $n2 = rand(0, 19);
+
+        // numero entero aleatorio 1-10 para cada peligro ###
     $nr = rand(1, 10);
     $red = $nr;
+
+        //creacion de peligro en la matriz con su valor de peligro*
     $matrix[$n1][$n2] = $red;
     }
+    //definiendo la matriz para el 'mapa**'
+
+    
     $matrix = [];
+
+    //bucle para generar las filas
     for ($i = 0; $i < 20; $i++) {
         $row = [];
+
+        //bucle anidado para rellenar las filas
         for ($j = 0; $j < 20; $j++) {
             $row[] = 'X';
         }
+
+        //una vez las filas rellenadas, se añaden a la matriz
         $matrix[] = $row;
     }
+
+    // creanndo en la matriz el primer elemento en referencia a la ***batcueva***
     $matrix[0][0] = 'B';
 
     // Colocar sensores
-
+    //###################
     c_sensor($matrix);
     
     c_sensor( $matrix);
@@ -28,18 +47,19 @@ function main(){
     c_sensor( $matrix);
     c_sensor( $matrix);
     c_sensor( $matrix);
-    
+    //##################
     // Imprimir sensores
     echo "<div class= 'sensores'>";
     foreach ($matrix as $i => $row) {
         foreach ($row as $j => $value) {
                 
             if ($value != 'X' && $value != 'B') {
+                //obtener la distancia
                 $distancia = abs($i) + abs($j);
                 echo "<div class='coordenada'>";
                 echo "Valor $value encontrado en las coordenadas ($i, $j)<br>". "Distancia a la Batcueva: $distancia<br>";
                 echo "</div>";
-                // Verificar si el valor pasa de 7
+                // Verificar si el valor pasa de 7, y en ese caso alertar !!!
                 if ($value >= 7) {
                     echo " <p class='warning'>  =>  Protocolo activado para el valor $value en las coordenadas ($i, $j)<br><p>";
                 }
@@ -93,10 +113,11 @@ echo "}";
     echo "<h4>Sensores</h4>";
     echo "</div>";
 
-    // Imprimir matriz
+    // Imprimir matriz completa
     echo "<div class='matriz'>";
     foreach ($matrix as $row) {
     foreach ($row as $i => $value) {
+        //deteccion de campos
         if ($value == 'B') {
             $row[$i] = "<span style='color: blue;'>$value</span>";
         } elseif ($value == 'X') {
