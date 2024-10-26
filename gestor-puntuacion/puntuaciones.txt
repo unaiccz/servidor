@@ -1,5 +1,1 @@
-unai;90
-unai;90
-username;puntuacion
-username;puntuacion
-username;puntuacion
+unaicc2003;1000000
