@@ -24,12 +24,23 @@ function main(){
     c_sensor( $matrix);
     c_sensor( $matrix);
     c_sensor( $matrix);
+
+
+
+
+
+
     // Imprimir sensores detectados en la matriz
     echo "<div class= 'sensores'>";
 imprimir_sensores($matrix);
     echo "</div>";
 
-    // Estilos de la pagino
+
+
+
+
+
+    // Estilos de la pagina
     echo "<style>";
     echo ".coordenada {";
 echo "text-align: center;";
@@ -73,6 +84,14 @@ echo "}";
     echo "<h4>Sensores</h4>";
     echo "</div>";
 
+
+
+
+
+
+
+
+    
     // Imprimir matriz
     echo "<div class='matriz'>";
 imprimir_matriz($matrix);
