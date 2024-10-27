@@ -1,3 +1,5 @@
+<!-- revisar -->
+
 <?php
 //clase para los productos
 class Producto{
