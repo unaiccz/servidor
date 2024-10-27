@@ -1,14 +1,11 @@
 <?php
-
+include 'utils/colocar_sensor.php';
+include 'utils/imprimir_sensores.php';
+include 'utils/imprimir_matriz.php';
+//funcion principal
 function main(){
-    $peligros = array();
-    function c_sensor(&$matrix){
-    $n1 = rand(0, 19);
-    $n2 = rand(0, 19);
-    $nr = rand(1, 10);
-    $red = $nr;
-    $matrix[$n1][$n2] = $red;
-    }
+    //funcion para colocar los sensores
+
     $matrix = [];
     for ($i = 0; $i < 20; $i++) {
         $row = [];
@@ -22,34 +19,17 @@ function main(){
     // Colocar sensores
 
     c_sensor($matrix);
-    
     c_sensor( $matrix);
     c_sensor( $matrix);
     c_sensor( $matrix);
     c_sensor( $matrix);
     c_sensor( $matrix);
-    
-    // Imprimir sensores
+    // Imprimir sensores detectados en la matriz
     echo "<div class= 'sensores'>";
-    foreach ($matrix as $i => $row) {
-        foreach ($row as $j => $value) {
-                
-            if ($value != 'X' && $value != 'B') {
-                $distancia = abs($i) + abs($j);
-                echo "<div class='coordenada'>";
-                echo "Valor $value encontrado en las coordenadas ($i, $j)<br>". "Distancia a la Batcueva: $distancia<br>";
-                echo "</div>";
-                // Verificar si el valor pasa de 7
-                if ($value >= 7) {
-                    echo " <p class='warning'>  =>  Protocolo activado para el valor $value en las coordenadas ($i, $j)<br><p>";
-                }
-
-            }
-        }
-    }
+imprimir_sensores($matrix);
     echo "</div>";
 
-    // Estilos
+    // Estilos de la pagino
     echo "<style>";
     echo ".coordenada {";
 echo "text-align: center;";
@@ -95,21 +75,8 @@ echo "}";
 
     // Imprimir matriz
     echo "<div class='matriz'>";
-    foreach ($matrix as $row) {
-    foreach ($row as $i => $value) {
-        if ($value == 'B') {
-            $row[$i] = "<span style='color: blue;'>$value</span>";
-        } elseif ($value == 'X') {
-            $row[$i] = "<span style='color: gray;'>$value</span>";
-        } elseif ($value <= 7) {
-            $row[$i] = "<span style='color: green;'>$value</span>";
-        } else {
-            $row[$i] = "<span style='color: red;'>$value</span>";
-        }
-    }
+imprimir_matriz($matrix);
     echo "</div>";
-    echo implode(' ', $row) . "<br>";
-    }
 }
 
 
