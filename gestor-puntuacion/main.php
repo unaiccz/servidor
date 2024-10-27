@@ -1,3 +1,5 @@
+<!-- html para la vista principal de la aplicacion -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -73,68 +75,19 @@
 </div>
 
 </div>
-
+<!-- codigo php -->
 <?php
-use Exception;
+include 'utils/crear_archivo.php';
+include 'utils/leer_archivo.php';
 
 function main() {
     // Crear archivo para la escritura y lectura del mismo
-    try {
-        if (!file_exists('puntuaciones.txt')) {
-            throw new Exception("El archivo no existe. Creando archivo...");
-        }
-        $file = fopen('puntuaciones.txt', 'r');
-        if ($file) {
-            // Escribir en el archivo un ejemplo
-            fclose($file);
-        } else {
-            throw new Exception("No se pudo abrir el archivo.");
-        }
-    } catch (Exception $e) {
-        echo "ERROR: " . $e->getMessage();
-        return;
-    }
-
+  crear_archivo();
     // Abrimos el archivo en modo lectura
-    try {
-        $file = fopen('puntuaciones.txt', 'r');
-        if ($file) {
-            // Guardamos el contenido del archivo en una variable, para poder tratarlo
-            $data = fread($file, filesize('puntuaciones.txt'));
-            fclose($file);
-            // Uso explode para obtener cada una de las filas, usando trim para borrar espacios
-            $rows = explode(PHP_EOL, trim($data));
-            // Convertir cada fila en un array asociativo
-            $dataArray = [];
-            foreach ($rows as $row) {
-                if (!empty($row)) {
-                    $columns = explode(";", $row);
-                    $dataArray[] = ['usuario' => $columns[0], 'puntuacion' => (int)$columns[1]];
-                }
-            }
-            // Ordenar el array por puntuacion de mayor a menor
-            usort($dataArray, function($a, $b) {
-                return $b['puntuacion'] - $a['puntuacion'];
-            });
-            // Mostrar el contenido en una tabla
-            echo "<table>";
-            echo "<thead>";
-            echo "<tr><th>Usuario</th><th>Puntuacion</th></tr>";
-            echo "</thead>";
-            echo "<tbody>";
-            foreach ($dataArray as $item) {
-                echo "<tr><td>{$item['usuario']}</td><td>{$item['puntuacion']}</td></tr>";
-            }
-            echo "</tbody>";
-            echo "</table>";
-        } else {
-            throw new Exception("No se pudo abrir el archivo.");
-        }
-    } catch (Exception $e) {
-        echo "ERROR: " . $e->getMessage();
-    }
+leer_archivo();
 }
 
+// Llamar a la función principal
 main();
 ?>
 

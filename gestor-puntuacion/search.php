@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             while (($line = fgets($file)) !== false) {
                 $data = explode(";", $line);
                 if (count($data) == 2) {
-                    if (stripos($data[0], $query) !== false) { // stripos for case-insensitive search
+                    if (stripos($data[0], $query) !== false) { // Buscar por nombre
                         echo "<tr><td>" . htmlspecialchars($data[0]) . "</td><td>" . htmlspecialchars($data[1]) . "</td></tr>";
                         $found = true;
                     }
@@ -41,4 +41,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "<p>Por favor, envíe una consulta.</p>";
 }
-?>

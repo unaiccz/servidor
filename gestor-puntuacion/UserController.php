@@ -6,12 +6,13 @@ if($_POST){
     $username = $_POST['username'];
     $puntuacion = $_POST['puntuacion'];
     if(strlen($username)< 3 || $puntuacion < 0){
-        echo "ERROR: Nombre demasiado cortoo puntuacion incorrecta";
+        echo "ERROR: Nombre demasiado corto puntuacion incorrecta";
         header('Refresh: 5; URL=./main.php');
         exit();
         
     }
     try {
+        // abrir el archivo en modo escritura
         $file = fopen('puntuaciones.txt', 'a+');
         if ($file) {
             fwrite($file, $username . ";" . $puntuacion . PHP_EOL);
@@ -23,5 +24,7 @@ if($_POST){
         echo "ERROR: " . $e->getMessage();
         return;
     }
-}header('Location: ./main.php');
+}
+
+header('Location: ./main.php');
 exit();
