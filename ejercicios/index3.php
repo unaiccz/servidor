@@ -1,7 +1,5 @@
 <?php
-include 'utils/colocar_sensor.php';
-include 'utils/imprimir_sensores.php';
-include 'utils/imprimir_matriz.php';
+include 'index3.inc.php';
 //funcion principal
 function main(){
     //funcion para colocar los sensores
