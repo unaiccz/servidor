@@ -7,7 +7,7 @@ if($_POST){
     $puntuacion = $_POST['puntuacion'];
     if(strlen($username)< 3 || $puntuacion < 0){
         echo "ERROR: Nombre demasiado corto puntuacion incorrecta";
-        header('Refresh: 5; URL=./main.php');
+        header('Refresh: 5; URL=./index4.php');
         exit();
         
     }
@@ -26,5 +26,5 @@ if($_POST){
     }
 }
 
-header('Location: ./main.php');
+header('Location: ./index4.php');
 exit();

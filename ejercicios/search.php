@@ -1,4 +1,5 @@
 <?php
+echo "<a href='index4.php'>Volver</a>";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = htmlspecialchars($_POST['query']);
 
@@ -6,13 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file = fopen('puntuaciones.txt', 'r');
         if ($file) {
             $found = false;
-            echo '<style>
-                    body { font-family: Arial, sans-serif; }
-                    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-                    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
-                    th { background-color: #f2f2f2; }
-                    .no-result { color: red; }
-                  </style>';
+            echo '<link rel="stylesheet" href="styles4.css">';
             echo '<table>
                     <tr>
                         <th>Usuario</th>
@@ -41,3 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "<p>Por favor, envíe una consulta.</p>";
 }
+?>
