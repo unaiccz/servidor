@@ -2,8 +2,7 @@
 include 'index3.inc.php';
 //funcion principal
 function main(){
-    //funcion para colocar los sensores
-
+//bucle para inicializar la matriz
     $matrix = [];
     for ($i = 0; $i < 20; $i++) {
         $row = [];

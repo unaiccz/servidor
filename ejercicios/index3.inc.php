@@ -1,5 +1,5 @@
 <?php
-//crear cursor
+//crear cursor mediante tres numeros aleatorios
 function c_sensor(&$matrix){
         $n1 = rand(0, 19);
         $n2 = rand(0, 19);
@@ -25,12 +25,11 @@ function c_sensor(&$matrix){
                 echo implode(' ', $row) . "<br>";
                 }
         }
-        //imprimir sensores
+        //imprimir sensores recogidos de la matriz
         function imprimir_sensores($matrix){
             $max_value = -1;
-            $max_coords = [];
-''
-            foreach ($matrix as $i => $row) {
+$max_coords = [];
+foreach ($matrix as $i => $row) {
                 foreach ($row as $j => $value) {
                     if ($value != 'X' && $value != 'B') {
                         $distancia = abs($i) + abs($j);

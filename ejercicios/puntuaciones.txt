@@ -1,3 +1,1 @@
-unaicc;1000000
-jose;1000
-CARLOS;90000
+unaicc;9000000
