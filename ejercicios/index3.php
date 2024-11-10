@@ -1,99 +1,57 @@
-<?php
-include 'index3.inc.php';
-//funcion principal
-function main(){
-//bucle para inicializar la matriz
-    $matrix = [];
-    for ($i = 0; $i < 20; $i++) {
-        $row = [];
-        for ($j = 0; $j < 20; $j++) {
-            $row[] = 'X';
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Batcueva</title>
+    <style>
+        .matriz span {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
         }
-        $matrix[] = $row;
+    </style>
+    <link rel="stylesheet" href="index3.css">
+</head>
+<body>
+    <h1>Bienvenidos a la Batcueva</h1>
+    <?php
+    // Incluir las funciones
+    include 'index3.inc.php';
+
+    // Función principal
+    function main() {
+        // Tamaño de la matriz
+        $tamanio = 20;
+        // Inicializar la matriz
+        $matriz = array();
+        inicializar_matriz($tamanio, $matriz);
+        
+        // Posición de la Batcueva
+        $matriz[0][0] = 'B';
+        
+ 
+        $sensores = array();
+        $peligro_maximo = 0;
+        crear_sensores(5, $sensores, $peligro_maximo);
+        colocar_sensores($sensores, $matriz);
+        
+        // Imprimir la matriz
+        echo "<h2>Matriz de Sensores</h2>";
+        imprimir_matriz($matriz, $tamanio);
+        
+        // Mostrar detalles de los sensores
+        echo "<h2>Detalles de los Sensores</h2>";
+        mostrar_sensores($sensores);
+        
+        // Ejecutar protocolo de seguridad
+        echo "<h2>Protocolo de Seguridad</h2>";
+        protocolo_seguridad($sensores);
+        echo "<p class='max'>El peligro máximo es: $peligro_maximo</p>";
     }
-    $matrix[0][0] = 'B';
 
-    // Colocar sensores
-
-    c_sensor($matrix);
-    c_sensor( $matrix);
-    c_sensor( $matrix);
-    c_sensor( $matrix);
-    c_sensor( $matrix);
-    c_sensor( $matrix);
-
-
-
-
-
-
-    // Imprimir sensores detectados en la matriz
-    echo "<div class= 'sensores'>";
-imprimir_sensores($matrix);
-    echo "</div>";
-
-
-
-
-
-
-    // Estilos de la pagina
-    echo "<style>";
-    echo ".coordenada {";
-echo "text-align: center;";
-echo "margin-bottom: 20px;";
-echo "padding: 20px;";
-echo "border: 2px solid #ccc;";
-echo "background-color: #f9f9f9;";
-echo "border-radius: 10px;";
-echo "box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.5);";
-echo "}";
-echo ".warning {";
-echo "color: red;";
-echo "font-weight: bold;";
-echo "}";
-    echo ".sensores {";
-echo "text-align: center;";
-echo "margin-bottom: 80px;";
-echo "margin-top: 20px;";
-echo "padding: 20px;";
-echo "border: 2px solid #ccc;";
-echo "background-color: #f9f9f9;";
-echo "border-radius: 10px;";
-echo "box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.5);";
-echo "}";
-echo ".matriz {";
-echo "text-align: center;";
-echo "margin-top: 20px;";
-echo "padding: 20px;";
-echo "border: 2px solid #ccc;";
-echo "background-color: #f9f9f9;";
-echo "border-radius: 10px;";
-echo "box-shadow: 0 4px 8px rgba(0, 0, 0.1, 0.5);";
-echo "width: 400px;";
-echo "}";
-    echo "</style>";
-
-    // Encabezado
-    echo "<div>";
-    echo "<h1>Batcueva</h1>";
-    echo "<hr>";
-    echo "<h4>Sensores</h4>";
-    echo "</div>";
-
-
-
-
-
-
-
-
-    
-    // Imprimir matriz
-    echo "<div class='matriz'>";
-imprimir_matriz($matrix);
-    echo "</div>";
-}
-
-
-main();
+    // Ejecutar la función principal
+    main();
+    ?>
+</body>
+</html>

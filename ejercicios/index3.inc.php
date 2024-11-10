@@ -1,59 +1,65 @@
 <?php
-//crear cursor mediante tres numeros aleatorios
-function c_sensor(&$matrix){
-        $n1 = rand(0, 19);
-        $n2 = rand(0, 19);
-        $nr = rand(1, 10);
-        $red = $nr;
-        $matrix[$n1][$n2] = $red;
+// =======================================
+//           Funciones de la Batcueva
+// =======================================
+// funcion para representar una matriz con tamanio $n
+function inicializar_matriz($n, &$matriz) {
+    // Inicializar la matriz
+    for ($i = 0; $i < $n; $i++) {
+        $matriz[$i] = array();
+        for ($j = 0; $j < $n; $j++) {
+            $matriz[$i][$j] = 0;
         }
-        //crear matriz
-        function imprimir_matriz($matrix){
-            foreach ($matrix as $row) {
-                foreach ($row as $i => $value) {
-                    if ($value == 'B') {
-                        $row[$i] = "<span style='color: blue;'>$value</span>";
-                    } elseif ($value == 'X') {
-                        $row[$i] = "<span style='color: gray;'>$value</span>";
-                    } elseif ($value <= 7) {
-                        $row[$i] = "<span style='color: green;'>$value</span>";
-                    } else {
-                        $row[$i] = "<span style='color: red;'>$value</span>";
-                    }
-                }
-                echo "</div>";
-                echo implode(' ', $row) . "<br>";
-                }
-        }
-        //imprimir sensores recogidos de la matriz
-        function imprimir_sensores($matrix){
-            $max_value = -1;
-$max_coords = [];
-foreach ($matrix as $i => $row) {
-                foreach ($row as $j => $value) {
-                    if ($value != 'X' && $value != 'B') {
-                        $distancia = abs($i) + abs($j);
-                        echo "<div class='coordenada'>";
-                        echo "Valor $value encontrado en las coordenadas ($i, $j)<br>". "Distancia a la Batcueva: $distancia<br>";
-                        echo "</div>";
-                        // Verificar si el valor pasa de 7
-                        if ($value >= 7) {
-                            echo " <p class='warning'>  =>  Protocolo activado para el valor $value en las coordenadas ($i, $j)<br><p>";
-                        }
-                        // Actualizar el valor máximo y sus coordenadas
-                        if ($value > $max_value) {
-                            $max_value = $value;
-                            $max_coords = [$i, $j];
-                        }
-                    }
-                }
-            }
+    }
 
-            if ($max_value != -1) {
-                echo "<div class='danger' style=\"border: 1px solid orange\">";
-                echo "Zona de mayor peligro: Valor $max_value en las coordenadas (" . $max_coords[0] . ", " . $max_coords[1] . ")<br>";
-                echo "</div>";
+
+}
+    // Imprimir la matriz en formato de cuadrícula
+function imprimir_matriz($matriz, $n){
+    for ($i = 0; $i < $n; $i++) {
+        for ($j = 0; $j < $n; $j++) {
+            $valor = $matriz[$i][$j];
+            if ($valor === 'B') {
+                echo "<span style='color: blue;'>$valor</span> ";
+            } elseif ($valor === 0) {
+                echo "<span style='color: green;'>$valor</span> ";
+            } elseif ($valor < 7) {
+                echo "<span style='color: orange;'>$valor</span> ";
+            } else {
+                echo "<span style='color: red;'>$valor</span> ";
             }
         }
-                
-        
+        echo "<br>";
+    }
+}
+//funcion para crear sensores
+function crear_sensores($numero_sensores, &$sensores,&$peligro_maximo){
+    for ($i=0; $i < $numero_sensores; $i++) {
+    $x = rand(0,20);
+    $y = rand(0,20);
+    $peligro = rand(1,10);
+    $sensor = array("x"=>$x,"y"=>$y,"peligro"=>$peligro, "distancia"=>(abs($x)+abs($y)));
+    $sensores[$i] = $sensor;
+    if($peligro > $peligro_maximo){
+        $peligro_maximo = "x: ".$sensor['x']. " y: ".$sensor['y']." peligro: ".$sensor['peligro'];
+    }
+    }
+function colocar_sensores($sensores, &$matriz){
+foreach ($sensores as $sensor) {
+    $matriz[$sensor["x"]][$sensor["y"]] = $sensor["peligro"];
+}
+}
+    function mostrar_sensores($sensores){
+        foreach ($sensores as $sensor) {
+            echo "Sensor en x: ".$sensor["x"]." y: ".$sensor["y"]." peligro: ".$sensor["peligro"]. " Distancia a la Batcueva:   ".$sensor['distancia']."<br>";
+        }
+    }
+
+}
+function protocolo_seguridad($sensores){
+    foreach($sensores as $sensor){
+        if($sensor["peligro"] >= 7){
+            echo "Alerta! Sensor en x: ".$sensor["x"]." y: ".$sensor["y"]." peligro: ".$sensor["peligro"]. "  Distancia a la Batcueva:   ".$sensor['distancia']."<br>";
+        }
+    }
+}

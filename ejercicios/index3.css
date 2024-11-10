@@ -1,0 +1,79 @@
+/* index3.css */
+
+/* Estilo general del cuerpo */
+body {
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado principal */
+h1 {
+    text-align: center;
+    color: #ffcc00; /* Color amarillo de Batman */
+    margin-top: 20px;
+}
+
+/* Encabezados secundarios */
+h2 {
+    color: #ffcc00; /* Color amarillo de Batman */
+    margin-left: 20px;
+}
+
+/* Estilo de la matriz */
+.matriz {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.matriz span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    margin: 1px;
+    border: 1px solid #333;
+}
+
+/* Colores para los valores de la matriz */
+.matriz span.blue {
+    color: blue;
+}
+
+.matriz span.green {
+    color: green;
+}
+
+.matriz span.orange {
+    color: orange;
+}
+
+.matriz span.red {
+    color: red;
+}
+
+/* Estilo para los detalles de los sensores */
+.details {
+    margin: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Estilo para el protocolo de seguridad */
+.alert {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilo para el peligro máximo */
+.max {
+    color: #ffcc00; /* Color amarillo de Batman */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
