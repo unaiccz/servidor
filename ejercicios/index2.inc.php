@@ -5,6 +5,10 @@ use DateTime;
 function validarExp($exp, $valor) {
     return preg_match($exp, $valor) === 1;
 }
+function validarEmail($email) {
+    $expReg = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    return validarExp($expReg, $email);
+}
 //funcion para calcular la edad
 function calcularEdad($fechaNacimiento) {
     $fechaActual = new DateTime();
@@ -12,23 +16,21 @@ function calcularEdad($fechaNacimiento) {
     $edad = $fechaActual->diff($fechaNacimiento)->y;
     return $edad;
 }
-// se podria reutilizar la funcion validar_exp()
+// reutilizamos la funcion de validar expresiones regulares
 function nombreValido($nombre) {
-    $exp = '/^[a-zA-Z]+$/';
+    $exp = '/^[a-zA-Z\s]+$/';
     return validarExp($exp, $nombre);
 }
 use Exception;
 
 function crearUsuario($nombre, $email, $fechaNacimiento)
 {
-    $expReg = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
-
     if (!nombreValido($nombre)) {
-$nombre = "nombre no valido";
+        $nombre = "nombre no valido";
     } 
     
-    if (!validarExp($expReg, $email)) {
-        $email = " email no valido";
+    if (!validarEmail($email)) {
+        $email = "email no valido";
     }
     
     $edad = calcularEdad($fechaNacimiento);

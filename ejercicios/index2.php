@@ -7,7 +7,7 @@ $Users = [];
 function main ()
 {
     //mediante el retoorno de ` crearUsuario` se rellena el array de usuarios
-    $Users[] = crearUsuario("luke","lukesk@gmail.gax","11/04/2003");
+    $Users[] = crearUsuario("luke skywalwer","lukesk@gmail.gax","11/04/2003");
     $Users[] = crearUsuario("yoda", "yoda@jedi.com", "11/04/1975");
     $Users[] = crearUsuario("obiwan", "obiwan@jedi.com", "11/04/1977");
     $Users[] = crearUsuario("Anakin","anakin@sith.com","06/12/1500");
@@ -30,7 +30,7 @@ function main ()
             margin: 5px 0;
         }
     </style>';
-    //recorremos el array de usuarios para mostrarlos
+    //recorremos el array de usuarios para mostrarlos y paa poder localizar usuarios del lado oscuro
     foreach($Users as $us){
         if (strpos($us['Email'], '@sith.com') !== false) {
             echo '<script>alert("Usuario usuario del lado oscuro detectado: '.$us['Nombre'].'");</script>';
