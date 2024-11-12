@@ -1,0 +1,10 @@
+leer archivo puntuaciones
+almacenar datos en array>=
+inc.php:
+mostrar_puntuaciones()
+linea_mal_formada ignorat y msg
+buscar_puntuacion($nombre)
+si no existe mostrar msg
+aniadir_puntuaciones()
+comprobar datos
+si .txt no existe crearlo automaticamente y mostrar mensaje
